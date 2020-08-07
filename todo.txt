@@ -1,0 +1,15 @@
+TODO:
+
+setup a git project
+create template main.c for starting project
+get keyboard functionality working
+remove vec.h dependancy from graphics library
+implement sliders
+get timing functionality working
+default styles/colors for imgui
+implement a menu system
+add text box
+3x3 matrix operations
+2d-affine transformations
+text inside button
+fix parameter mapping in knob code
