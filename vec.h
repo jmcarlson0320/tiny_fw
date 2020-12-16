@@ -2,23 +2,23 @@
 #define VEC_H
 
 enum axis {
-        X_COOR,
-        Y_COOR,
-        Z_COOR
+    X_COOR,
+    Y_COOR,
+    Z_COOR
 };
 
 enum color_comp {
-        RED_COMP,
-        GREEN_COMP,
-        BLUE_COMP
+    RED_COMP,
+    GREEN_COMP,
+    BLUE_COMP
 };
 
 typedef struct {
-        float e[2];
+    float e[2];
 } vec2;
 
 typedef struct {
-        float e[3];
+    float e[3];
 } vec3;
 
 typedef vec2 point2;

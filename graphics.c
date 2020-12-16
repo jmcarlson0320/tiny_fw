@@ -32,7 +32,7 @@ static void barycentric(point2 p, point2 a, point2 b, point2 c, float *u, float 
     *u = 1.0f - *v - *w;
 }
 
-static int interpolate_color(float ratio, int color1, int color2)
+int interpolate_color(float ratio, int color1, int color2)
 {
     int r1 = (color1 & 0x00ff0000) >> 16;
     int g1 = (color1 & 0x0000ff00) >> 8;

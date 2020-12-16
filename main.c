@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define SCALE_FACTOR 5
+#define SCALE_FACTOR 3
 #define WIDTH (1920 / SCALE_FACTOR)
 #define HEIGHT (1080 / SCALE_FACTOR)
 

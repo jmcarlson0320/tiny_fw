@@ -74,8 +74,8 @@ void app_update(App *app)
             app->running = 0;
         } else if (event.type == SDL_KEYDOWN) {
             SDL_KeyboardEvent *keyboard = (SDL_KeyboardEvent *) &event;
-           // app->keyboard.down[keyboard->scancode];
-           // app->keyboard.pressed[keyboard->scancode];
+            // app->keyboard.down[keyboard->scancode];
+            // app->keyboard.pressed[keyboard->scancode];
         } else if (event.type == SDL_MOUSEMOTION) {
             SDL_MouseMotionEvent *mouse = (SDL_MouseMotionEvent *) &event;
             app->mouse.dx = mouse->x - app->mouse.x;

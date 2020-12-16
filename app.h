@@ -105,11 +105,34 @@ typedef struct {
 
 } App;
 
+/*
+ * initializes the app structure, allocates memory for the state
+ * arrays and the graphics pixel buffer
+ * */
 App app_create(int width, int height);
+
+/*
+ * frees the app state and closes the window
+ * */
 void app_quit(App *app);
 
+/*
+ * creates a window for the app and puts it on the screen.
+ * the window remains until app_quit() is called.
+ * */
 void app_start(App *app);
+
+/*
+ * fills in the app structure with all of the real-time state:
+ * all the sub-structures that have "state" in their name.
+ * This should be called at the top of every frame.
+ * */
 void app_update(App *app);
+
+/*
+ * presents the graphics buffer to the window.
+ * This should be called at the end of every frame.
+ * */
 void app_draw_graphics_to_screen(App *app);
 
 #endif
