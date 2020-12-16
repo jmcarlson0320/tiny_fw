@@ -1,6 +1,5 @@
 TODO:
 
-setup a git project
 create template main.c for starting project
 get keyboard functionality working
 remove vec.h dependancy from graphics library
@@ -13,3 +12,13 @@ add text box
 2d-affine transformations
 text inside button
 fix parameter mapping in knob code
+
+library:
+    new git branch
+    finish keyboard code
+    remove ui code
+    combine into single header w/ multiple .c files
+    compile to library
+    create local library installation directory
+    
+
