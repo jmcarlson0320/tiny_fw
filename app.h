@@ -1,3 +1,5 @@
+// HOW TO USE:
+//
 // App app = app_create(w, h);
 // app_start(&app);
 // while (app.running) {
