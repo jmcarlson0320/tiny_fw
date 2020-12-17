@@ -24,7 +24,7 @@ enum MOUSE_BUTTIONS {
 };
 
 enum KEYS {
-    KEY_UNKNOWN = 0,
+    KEY_UNKNOWN,
     KEY_A = 4,
     KEY_B,
     KEY_C,
@@ -69,7 +69,7 @@ enum KEYS {
     KEY_RIGHT = 79,
     KEY_LEFT,
     KEY_DOWN,
-    KEY_UP,
+    KEY_UP
 };
 
 typedef struct {
