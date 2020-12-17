@@ -1,4 +1,4 @@
-#include "app.h"
+#include "tiny-fw.h"
 #include "particle.h"
 
 #define SCALE_FACTOR 3

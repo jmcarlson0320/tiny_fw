@@ -140,14 +140,14 @@ typedef struct {
 
 } App;
 
-// app.c
+// tiny-core.c
 App app_create(int width, int height);
 void app_quit(App *app);
 void app_start(App *app);
 void app_update(App *app);
 void app_draw_graphics_to_screen(App *app);
 
-// graphics.c
+// tiny-graphics.c
 Bitmap bitmap_create(int width, int height, int *pixels);
 Bitmap bitmap_allocate(int width, int height);
 int bitmap_create_from_ppm(Bitmap *b, char *filename);
@@ -168,14 +168,14 @@ void draw_bitmap(Bitmap *b, int src_x0, int src_y0, int src_x1, int src_y1, int 
 void draw_bitmap_color(Bitmap *b, int src_x0, int src_y0, int src_x1, int src_y1, int dest_x, int dest_y, int color);
 void draw_text(char *txt, int x, int y, int color);
 
-// utils.c
+// tiny-utils.c
 float lerp(float norm, float min, float max);
 float norm(float value, float min, float max);
 float map(float value, float srcMin, float srcMax, float destMin, float destMax);
 int interpolate_color(float ratio, int color1, int color2);
 int point_in_rect(int x, int y, int x0, int y0, int w, int h);
 
-// vec.c
+// tiny-vec.c
 vec2 new_vec2(float x, float y);
 void vec2_add(vec2 *dest, const vec2 *u, const vec2 *v);
 void vec2_sub(vec2 *dest, const vec2 *u, const vec2 *v);

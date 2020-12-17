@@ -1,5 +1,5 @@
 // Simple app interface implemented with SDL
-#include "app.h"
+#include "tiny-fw.h"
 
 #include <SDL2/SDL.h>
 
