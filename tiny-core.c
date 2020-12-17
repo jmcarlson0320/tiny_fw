@@ -20,6 +20,12 @@ App app_create(int width, int height)
     app.mouse.button[1] = 0;
     app.mouse.show_mouse = 0;
 
+    for (int i = 0; i < 128; i++) {
+        app.keyboard.down[i] = 0;
+        app.keyboard.pressed[i] = 0;
+        app.keyboard.released[i] = 0;
+    }
+
     app.time.ticks = 0;
     app.time.dt_sec = 17.0f / 1000.0f;
 

@@ -1,3 +1,9 @@
 TODO:
-    look for keyboard down bug
-
+    test code
+        unit tests?
+        test app?
+    library deploy/install script
+    audio functionality
+    graphics
+        matrix library
+        transformations
