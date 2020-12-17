@@ -1,4 +1,4 @@
-#include "vec.h"
+#include "app.h"
 #include <math.h>
 
 vec2 new_vec2(float x, float y)

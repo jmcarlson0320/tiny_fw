@@ -1,7 +1,5 @@
 #include "particle.h"
-#include "graphics.h"
-#include "vec.h"
-#include "utils.h"
+#include "app.h"
 
 #include <stdlib.h>
 #include <math.h>

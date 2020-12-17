@@ -6,12 +6,12 @@ EXE = app
 $(EXE): emitter_test.o app.o graphics.o vec.o particle.o utils.o
 	$(CC) -o $@ $^ $(LIBS)
 
-emitter_test.o: app.h graphics.h particle.h
+emitter_test.o: app.h
 app.o: app.h
-graphics.o: graphics.h vec.h
-vec.o: vec.h
-particle.o: particle.h graphics.h vec.h
-utils.o: utils.h
+graphics.o: app.h
+vec.o: app.h
+utils.o: app.h
+particle.o: particle.h app.h
 
 clean:
 	rm *.o $(EXE)

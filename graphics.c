@@ -1,5 +1,4 @@
-#include "graphics.h"
-#include "vec.h"
+#include "app.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>

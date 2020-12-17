@@ -14,9 +14,6 @@ text inside button
 fix parameter mapping in knob code
 
 library:
-    remove ui code
     combine into single header w/ multiple .c files
     compile to library
     create local library installation directory
-    
-

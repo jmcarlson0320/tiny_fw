@@ -29,12 +29,9 @@ Bitmap bitmap_create(int width, int height, int *pixels);
 Bitmap bitmap_allocate(int width, int height);
 int bitmap_create_from_ppm(Bitmap *b, char *filename);
 void bitmap_deallocate(Bitmap *b);
-
 void graphics_output_set(Bitmap *b);
 Bitmap graphics_output_get(void);
-
 int interpolate_color(float ratio, int color1, int color2);
-
 void draw_point(int x, int y, int color);
 void draw_line(int x0, int y0, int x1, int y1, int color);
 void draw_rect(int x0, int y0, int x1, int y1, int color);
