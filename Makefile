@@ -1,19 +1,16 @@
 CC = gcc
 CFLAGS = -g -Wall
 LIBS = -lSDL2 -lm
-EXE = app
 
-$(EXE): emitter_test.o tiny-core.o tiny-graphics.o tiny-vec.o particle.o tiny-utils.o
-	$(CC) -o $@ $^ $(LIBS)
+libtinyfw.a: tiny-core.o tiny-graphics.o tiny-vec.o tiny-utils.o
+	ar rcs $@ $^
 
-emitter_test.o: tiny-fw.h
-app.o: tiny-fw.h
-graphics.o: tiny-fw.h
-vec.o: tiny-fw.h
-utils.o: tiny-fw.h
-particle.o: particle.h tiny-fw.h
+tiny-core.o: tiny-fw.h
+tiny-graphics.o: tiny-fw.h
+tiny-vec.o: tiny-fw.h
+tiny-utils.o: tiny-fw.h
 
 clean:
-	rm *.o $(EXE)
+	rm *.o *.a
 
 .PHONY: clean

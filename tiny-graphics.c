@@ -6,7 +6,7 @@
 static Bitmap output;
 
 static Font default_font;
-static char *font_file_name = "default_font.ppm";
+static char *font_file_name = "/home/jmc/lib/default_font.ppm";
 static int font_set = 0;
 
 static void barycentric(point2 p, point2 a, point2 b, point2 c, float *u, float *v, float *w)
