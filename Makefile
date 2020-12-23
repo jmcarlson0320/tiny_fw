@@ -10,6 +10,9 @@ tiny-graphics.o: tiny-fw.h
 tiny-vec.o: tiny-fw.h
 tiny-utils.o: tiny-fw.h
 
+install: libtinyfw.a tiny-fw.h
+	cp libtinyfw.a ~/lib/; cp tiny-fw.h ~/include/
+
 clean:
 	rm *.o *.a
 
