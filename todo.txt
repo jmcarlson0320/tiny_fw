@@ -1,6 +1,4 @@
 TODO:
-    fix keyboard array bug
-        keys pressed that aren't in enum/array cause segfault
     test code
         unit tests?
         test app?

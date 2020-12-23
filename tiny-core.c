@@ -82,15 +82,19 @@ void app_update(App *app)
             SDL_KeyboardEvent *keyboard = (SDL_KeyboardEvent *) &event;
             if (!keyboard->repeat) {
                 int key = keyboard->keysym.scancode;
-                app->keyboard.down[key] = 1;
-                app->keyboard.pressed[key] = 1;
+                if (key < 128) {
+                    app->keyboard.down[key] = 1;
+                    app->keyboard.pressed[key] = 1;
+                }
             }
         } else if (event.type == SDL_KEYUP) {
             SDL_KeyboardEvent *keyboard = (SDL_KeyboardEvent *) &event;
             if (!keyboard->repeat) {
                 int key = keyboard->keysym.scancode;
-                app->keyboard.down[key] = 0;
-                app->keyboard.released[key] = 1;
+                if (key < 128) {
+                    app->keyboard.down[key] = 0;
+                    app->keyboard.released[key] = 1;
+                }
             }
         } else if (event.type == SDL_MOUSEMOTION) {
             SDL_MouseMotionEvent *mouse = (SDL_MouseMotionEvent *) &event;
