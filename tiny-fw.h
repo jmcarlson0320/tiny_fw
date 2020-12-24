@@ -3,12 +3,12 @@
 // App app = app_create(w, h);
 // app_start(&app);
 // while (app.running) {
-//     app_update(&app);
+//     app_begin_frame(&app);
 //
 //     // get keyboard/mouse state by looking at mouse.button[]/keyboard.down/mouse.x/mouse.y/etc
 //     // draw graphics by writing to graphics.pixels_rgb[x + y * app.graphics.width]
 //
-//     app_draw_graphics_to_screen(&app);
+//     app_end_frame(&app);
 // }
 // app_quit(&app);
 
@@ -144,8 +144,8 @@ typedef struct {
 App app_create(int width, int height);
 void app_quit(App *app);
 void app_start(App *app);
-void app_update(App *app);
-void app_draw_graphics_to_screen(App *app);
+void app_begin_frame(App *app);
+void app_end_frame(App *app);
 
 // tiny-graphics.c
 Bitmap bitmap_create(int width, int height, int *pixels);
