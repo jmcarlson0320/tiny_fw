@@ -334,6 +334,7 @@ void draw_bitmap(Bitmap *b, int src_x0, int src_y0, int src_x1, int src_y1, int 
     if (src_x0 < 0 || src_y0 < 0 || src_x1 < 0 || src_y1 < 0) {
         return;
     }
+
     if (src_x0 >= b->width || src_y0 >= b->height || src_x1 >= b->width || src_y1 >= b->height) {
         return;
     }
@@ -362,6 +363,7 @@ void draw_bitmap_color(Bitmap *b, int src_x0, int src_y0, int src_x1, int src_y1
     if (src_x0 < 0 || src_y0 < 0 || src_x1 < 0 || src_y1 < 0) {
         return;
     }
+
     if (src_x0 >= b->width || src_y0 >= b->height || src_x1 >= b->width || src_y1 >= b->height) {
         return;
     }
