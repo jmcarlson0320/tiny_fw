@@ -1,15 +1,20 @@
 // HOW TO USE:
+// // in main:
 //
 // App app = app_create(w, h);
+//
 // app_start(&app);
+//
 // while (app.running) {
 //     app_begin_frame(&app);
 //
 //     // get keyboard/mouse state by looking at mouse.button[]/keyboard.down/mouse.x/mouse.y/etc
+//
 //     // draw graphics by writing to graphics.pixels_rgb[x + y * app.graphics.width]
 //
 //     app_end_frame(&app);
 // }
+//
 // app_quit(&app);
 
 #ifndef APP_H
