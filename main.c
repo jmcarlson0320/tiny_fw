@@ -40,8 +40,10 @@ int main(int argc, char *argv[])
     App app = app_create(WIDTH, HEIGHT);
     Ui_context ui = ui_create();
 
-    // setup graphics to draw to the app's framebuffer
+    // make a bitmap from the app's pixel array
     Bitmap canvas = bitmap_create(app.graphics.width, app.graphics.height, app.graphics.pixels_rgb);
+
+    // setup graphics to draw to the app's framebuffer
     graphics_output_set(&canvas);
 
     char txt_buffer[256];
@@ -51,20 +53,23 @@ int main(int argc, char *argv[])
     int bg_color = 0x000000;
 
     app_start(&app);
+
     while (app.running) {
+
         app_update(&app);
+
         update_ui_state(&app, &ui);
 
         // clear screen
         draw_fill_rect(0, 0, WIDTH - 1, HEIGHT - 1, bg_color);
 
         // immediate mode ui widgets
-        // color knobs
+        // knobs to change background color components
         do_knob(&ui, 1, WIDTH / 2 - 50, HEIGHT / 2, 15, &red, 0.0f, 1.0f);
         do_knob(&ui, 2, WIDTH / 2, HEIGHT / 2, 15, &green, 0.0f, 1.0f);
         do_knob(&ui, 3, WIDTH / 2 + 50, HEIGHT / 2, 15, &blue, 0.0f, 1.0f);
 
-        // set background color
+        // set background color using knob settings
         int r = (int) map(red, 0, 1, 0, 255);
         int g = (int) map(green, 0, 1, 0, 255);
         int b = (int) map(blue, 0, 1, 0, 255);
@@ -78,14 +83,15 @@ int main(int argc, char *argv[])
                             "g:%f\n"
                             "b:%f\n", bg_color, app.mouse.x, app.mouse.y, red, green, blue);
 
+        // draw the stats string
         draw_text(txt_buffer, 0, 0, 0xffffff);
 
-        // close button
+        // make a close button
         if (do_button(&ui, 4, WIDTH - 11, 0, 10, 10))
             app.running = 0;
         draw_text("x", WIDTH - 9, 0, 0x000000);
 
-        // draw cursor
+        // draw a triangle shaped cursor
         draw_fill_triangle(app.mouse.x, app.mouse.y, app.mouse.x + 10, app.mouse.y + 10, app.mouse.x, app.mouse.y + 14, 0xffffff);
         draw_triangle(app.mouse.x, app.mouse.y, app.mouse.x + 10, app.mouse.y + 10, app.mouse.x, app.mouse.y + 14, 0x000000);
 
