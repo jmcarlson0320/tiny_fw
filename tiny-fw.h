@@ -112,6 +112,11 @@ typedef vec2 point2;
 typedef vec3 point3;
 typedef vec3 color_rgb;
 
+
+typedef struct {
+    float mat[3][3];
+} transform;
+
 typedef struct {
     int running;
 
@@ -172,6 +177,7 @@ void draw_interpolated_triangle(int x0, int y0, int x1, int y1, int x2, int y2, 
 void draw_bitmap(Bitmap *b, int src_x0, int src_y0, int src_x1, int src_y1, int dest_x, int dest_y);
 void draw_bitmap_color(Bitmap *b, int src_x0, int src_y0, int src_x1, int src_y1, int dest_x, int dest_y, int color);
 void draw_text(char *txt, int x, int y, int color);
+void draw_wireframe(vec2 *points, int num_points, transform *t);
 
 // tiny-utils.c
 float lerp(float norm, float min, float max);
@@ -200,5 +206,11 @@ void vec3_cross(vec3 *dest, const vec3 *u, const vec3 *v);
 float vec3_len_sqr(const vec3 *v);
 float vec3_len(const vec3 *v);
 void vec3_normalize(vec3 *dest, const vec3 *v);
+transform new_transform();
+transform transform_combine(transform *b, transform *a);
+void transform_rotate(transform *t, float rad);
+void transform_scale(transform *t, float scalar);
+void transform_translate(transform *t, float dx, float dy);
+void transform_apply(transform *t, vec2 *dest, vec2 *src);
 
 #endif

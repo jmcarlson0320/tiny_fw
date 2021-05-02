@@ -437,3 +437,20 @@ void draw_text(char *txt, int x, int y, int color)
         char_count++;
     }
 }
+
+void draw_wireframe(vec2 *points, int num_points, transform *t)
+{
+    if (num_points < 2)
+        return;
+
+    // transformed points for ends of line segments
+    vec2 p_1;
+    vec2 p_2;
+
+    for (int i = 0; i < num_points; i++) {
+        int j = (i + 1) % num_points;
+        transform_apply(t, &p_1, &points[i]);
+        transform_apply(t, &p_2, &points[j]);
+        draw_line(p_1.e[X_COOR], p_1.e[Y_COOR], p_2.e[X_COOR], p_2.e[Y_COOR], 0xffffff);
+    }
+}

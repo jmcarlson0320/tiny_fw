@@ -117,3 +117,81 @@ void vec3_normalize(vec3 *dest, const vec3 *v)
 {
     vec3_div(dest, v, vec3_len(v));
 }
+
+transform new_transform()
+{
+    transform t = {
+        {{1.0f, 0.0f, 0.0f},
+         {0.0f, 1.0f, 0.0f},
+         {0.0f, 0.0f, 1.0f}}
+    };
+
+    return t;
+}
+
+// [dest] = [B] X [A]
+transform transform_combine(transform *b, transform *a)
+{
+    transform dest;
+
+    dest.mat[0][0] = a->mat[0][0] * b->mat[0][0] + a->mat[0][1] * b->mat[1][0] + a->mat[0][2] * b->mat[2][0];
+    dest.mat[0][1] = a->mat[0][0] * b->mat[0][1] + a->mat[0][1] * b->mat[1][1] + a->mat[0][2] * b->mat[2][1];
+    dest.mat[0][2] = a->mat[0][0] * b->mat[0][2] + a->mat[0][1] * b->mat[1][2] + a->mat[0][2] * b->mat[2][2];
+
+    dest.mat[1][0] = a->mat[1][0] * b->mat[0][0] + a->mat[1][1] * b->mat[1][0] + a->mat[1][2] * b->mat[2][0];
+    dest.mat[1][1] = a->mat[1][0] * b->mat[0][1] + a->mat[1][1] * b->mat[1][1] + a->mat[1][2] * b->mat[2][1];
+    dest.mat[1][2] = a->mat[1][0] * b->mat[0][2] + a->mat[1][1] * b->mat[1][2] + a->mat[1][2] * b->mat[2][2];
+
+    dest.mat[2][0] = a->mat[2][0] * b->mat[0][0] + a->mat[2][1] * b->mat[1][0] + a->mat[2][2] * b->mat[2][0];
+    dest.mat[2][1] = a->mat[2][0] * b->mat[0][1] + a->mat[2][1] * b->mat[1][1] + a->mat[2][2] * b->mat[2][1];
+    dest.mat[2][2] = a->mat[2][0] * b->mat[0][2] + a->mat[2][1] * b->mat[1][2] + a->mat[2][2] * b->mat[2][2];
+
+    return dest;
+}
+
+void transform_rotate(transform *t, float rad)
+{
+    transform rot = {
+        {{cos(rad), -sin(rad), 0.0f},
+         {sin(rad),  cos(rad), 0.0f},
+         {0.0f,      0.0f,     1.0f}}
+    };
+
+    *t = transform_combine(t, &rot);
+}
+
+void transform_scale(transform *t, float scalar)
+{
+    transform scale = {
+        {{scalar, 0.0f,   0.0f},
+         {0.0f,   scalar, 0.0f},
+         {0.0f,   0.0f,   1.0f}}
+    };
+
+    *t = transform_combine(t, &scale);
+}
+
+void transform_translate(transform *t, float dx, float dy)
+{
+    transform translate = {
+        {{1.0f, 0.0f,   dx},
+         {0.0f, 1.0f,   dy},
+         {0.0f, 0.0f, 1.0f}}
+    };
+
+    *t = transform_combine(t, &translate);
+}
+
+// transforms a 2d coordinate using the transformation matrix
+void transform_apply(transform *t, vec2 *dest, vec2 *src)
+{
+    vec3 in_h = new_vec3(src->e[X_COOR], src->e[Y_COOR], 1.0f);
+    vec3 out_h = new_vec3(0.0f, 0.0f, 1.0f);
+
+    out_h.e[X_COOR] = t->mat[0][0] * in_h.e[X_COOR] + t->mat[0][1] * in_h.e[Y_COOR] + t->mat[0][2] * in_h.e[Z_COOR];
+    out_h.e[Y_COOR] = t->mat[1][0] * in_h.e[X_COOR] + t->mat[1][1] * in_h.e[Y_COOR] + t->mat[1][2] * in_h.e[Z_COOR];
+    out_h.e[Z_COOR] = t->mat[2][0] * in_h.e[X_COOR] + t->mat[2][1] * in_h.e[Y_COOR] + t->mat[2][2] * in_h.e[Z_COOR];
+
+    dest->e[X_COOR] = out_h.e[X_COOR];
+    dest->e[Y_COOR] = out_h.e[Y_COOR];
+}
