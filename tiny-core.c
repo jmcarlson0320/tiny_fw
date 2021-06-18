@@ -14,6 +14,9 @@ App app_create(int width, int height)
     app.graphics.width = width;
     app.graphics.height = height;
 
+    Bitmap canvas = bitmap_create(width, height, app.graphics.pixels_rgb);
+    graphics_output_set(&canvas);
+
     app.mouse.x = 0;
     app.mouse.y = 0;
     app.mouse.button[0] = 0;
