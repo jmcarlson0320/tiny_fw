@@ -7,6 +7,11 @@ vec2 new_vec2(float x, float y)
     return v;
 }
 
+vec2 vec2_unit_vec(float angle)
+{
+    return new_vec2(cos(angle), sin(angle));
+}
+
 void vec2_add(vec2 *dest, const vec2 *u, const vec2 *v)
 {
     dest->e[0] = u->e[0] + v->e[0];

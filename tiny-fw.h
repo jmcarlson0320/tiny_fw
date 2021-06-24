@@ -188,6 +188,7 @@ int point_in_rect(int x, int y, int x0, int y0, int w, int h);
 
 // tiny-vec.c
 vec2 new_vec2(float x, float y);
+vec2 vec2_unit_vec(float angle);
 void vec2_add(vec2 *dest, const vec2 *u, const vec2 *v);
 void vec2_sub(vec2 *dest, const vec2 *u, const vec2 *v);
 void vec2_mult(vec2 *dest, const vec2 *v, float s);
