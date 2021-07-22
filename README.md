@@ -46,7 +46,7 @@ BINARY = ~/lib/
 INCLUDE = ~/include/
 ```
 
-Use the absolute path of the above lib folder to set the default font path. This is required at the moment until I find a better solution.
+Use the absolute path of the above lib folder to set the default font path. This is required at the moment until a better solution.
 ```bash
 DEFAULT_FONT_ABS_PATH = "/home/username/lib/default_font.ppm"
 ```
