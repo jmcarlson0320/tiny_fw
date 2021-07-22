@@ -6,13 +6,14 @@
 // app_start(&app);
 //
 // while (app.running) {
-//     app_begin_frame(&app);
+//     app_update(&app);
 //
 //     // get keyboard/mouse state by looking at mouse.button[]/keyboard.down/mouse.x/mouse.y/etc
 //
 //     // draw graphics by writing to graphics.pixels_rgb[x + y * app.graphics.width]
+//     // or with draw functions
 //
-//     app_end_frame(&app);
+//     app_draw_graphics(&app);
 // }
 //
 // app_quit(&app);
