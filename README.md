@@ -31,7 +31,7 @@ Tiny Framework requires SDL2.0. Make sure it is installed and set up on your sys
 
 Download the library.
 ```bash
-git clone https://github.com/jmcarlson0320/tiny-fw.git
+git clone https://github.com/jmcarlson0320/tiny_fw.git
 ```
 
 (Optional) Set the binary and header installation directories in the Makefile. Default is ~/lib and ~/include.
