@@ -34,10 +34,16 @@ Download the library.
 git clone https://github.com/jmcarlson0320/tiny_fw.git
 ```
 
-(Optional) Set the binary and header installation directories in the Makefile. Default is ~/lib and ~/include.
+Create folders for the binary and header files. Default is ~/lib and ~/include.
 ```bash
-BINARY = path_to_your_libraries_folder
-INCLUDE = path_to_your_headers_folder
+mkdir ~/lib
+mkdir ~/include
+```
+
+Set the binary and header installation directories in the Makefile. Default is ~/lib and ~/include.
+```bash
+BINARY = ~/lib
+INCLUDE = ~/include
 ```
 
 Compile and install.
