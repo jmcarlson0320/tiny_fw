@@ -1,10 +1,11 @@
+DEFAULT_FONT_ABS_PATH = "/home/jmc/lib/default_font.ppm"
 CC = gcc
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -DFONT='$(DEFAULT_FONT_ABS_PATH)'
 BINARY = ~/lib/
 INCLUDE = ~/include/
 
 libtinyfw.a: tiny-core.o tiny-graphics.o tiny-vec.o tiny-utils.o
-	ar rcs $@ $^
+	ar rcs $@ $^ 
 
 tiny-core.o: tiny-fw.h
 tiny-graphics.o: tiny-fw.h
