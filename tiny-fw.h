@@ -154,8 +154,8 @@ typedef struct {
 App app_create(int width, int height);
 void app_quit(App *app);
 void app_start(App *app);
-void app_begin_frame(App *app);
-void app_end_frame(App *app);
+void app_update(App *app);
+void app_draw_graphics(App *app);
 
 // tiny-graphics.c
 Bitmap bitmap_create(int width, int height, int *pixels);

@@ -50,7 +50,7 @@ void app_start(App *app)
     app->running = 1;
 }
 
-void app_begin_frame(App *app)
+void app_update(App *app)
 {
     // perform timing calculations
     // delay for a fixed frame-rate
@@ -131,7 +131,7 @@ void app_begin_frame(App *app)
         SDL_ShowCursor(0);
 }
 
-void app_end_frame(App *app)
+void app_draw_graphics(App *app)
 {
     // load app's pixel buffer data into a texture
     SDL_UpdateTexture(back_buffer, NULL, app->graphics.pixels_rgb, app->graphics.width * sizeof(int));
