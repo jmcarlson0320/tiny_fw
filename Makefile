@@ -1,5 +1,7 @@
 CC = gcc
 CFLAGS = -g -Wall
+BINARY = ~/lib/
+INCLUDE = ~/include/
 
 libtinyfw.a: tiny-core.o tiny-graphics.o tiny-vec.o tiny-utils.o
 	ar rcs $@ $^
@@ -10,7 +12,7 @@ tiny-vec.o: tiny-fw.h
 tiny-utils.o: tiny-fw.h
 
 install: libtinyfw.a tiny-fw.h
-	cp libtinyfw.a ~/lib/; cp default_font.ppm ~/lib/; cp tiny-fw.h ~/include/
+	cp libtinyfw.a $(BINARY); cp default_font.ppm $(BINARY); cp tiny-fw.h $(INCLUDE)
 
 clean:
 	rm *.o *.a
