@@ -7,7 +7,7 @@ static SDL_Window *window;
 static SDL_Renderer *renderer;
 static SDL_Texture *back_buffer;
 
-App app_create(int width, int height)
+App app_create(int width, int height, int scale)
 {
     App app;
     app.graphics.pixels_rgb = malloc(width * height * sizeof(int));
@@ -42,8 +42,9 @@ void app_start(App *app)
     // setup SDL for hw rendering
     int w = app->graphics.width;
     int h = app->graphics.height;
+    int scale = 3;
     SDL_Init(SDL_INIT_VIDEO);
-    SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP, &window, &renderer);
+    SDL_CreateWindowAndRenderer(w * scale, h * scale, 0, &window, &renderer);
     SDL_RenderSetLogicalSize(renderer, w, h);
     back_buffer = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, w, h);
 

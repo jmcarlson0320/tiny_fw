@@ -125,6 +125,7 @@ typedef struct {
         int *pixels_rgb;
         int width;
         int height;
+        int scale;
     } graphics;
 
     struct keyboard_state {
@@ -152,7 +153,7 @@ typedef struct {
 } App;
 
 // tiny-core.c
-App app_create(int width, int height);
+App app_create(int width, int height, int scale);
 void app_quit(App *app);
 void app_start(App *app);
 void app_update(App *app);
