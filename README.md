@@ -42,8 +42,8 @@ mkdir ~/include
 
 Set the binary and header installation directories in the Makefile. Default is ~/lib and ~/include.
 ```bash
-BINARY = ~/lib
-INCLUDE = ~/include
+BINARY = ~/lib/
+INCLUDE = ~/include/
 ```
 
 Use the absolute path of the above lib folder to set the default font path. This is required at the moment until I find a better solution.
