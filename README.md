@@ -63,9 +63,18 @@ Include the library in your source code.
 #include <tiny-fw.h>
 ```
 
+### Linux
+
 Compilation (using default installation paths).
 ```bash
 gcc -o executable main.c -I/home/user/include -L/home/user/lib -ltinyfw -lm -lSDL2
+```
+
+### MacOS
+
+Compilation (using default installation paths).
+```bash
+gcc -o executable main.c -I/home/user/include -L/home/user/lib -ltinyfw -lm -framework SDL2
 ```
 
 ## Contributing
