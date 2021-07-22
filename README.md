@@ -29,30 +29,30 @@ The idea of a "super-struct" that gives access to all the relevant app state was
 
 Tiny Framework requires SDL2.0. Make sure it is installed and set up on your system before continuing.
 
-Download the library
+Download the library.
 ```bash
 git clone https://github.com/jmcarlson0320/tiny-fw.git
 ```
 
-(Optional) Set the binary and header installation directories in the Makefile. Default is ~/lib and ~/include
+(Optional) Set the binary and header installation directories in the Makefile. Default is ~/lib and ~/include.
 ```bash
 BINARY = path_to_your_libraries_folder
 INCLUDE = path_to_your_headers_folder
 ```
 
-Compile and install
+Compile and install.
 ```bash
 make install
 ```
 
 ## Usage
 
-Include the library in your source code
+Include the library in your source code.
 ```C
 #include <tiny-fw.h>
 ```
 
-Compilation (using default installation paths)
+Compilation (using default installation paths).
 ```bash
 gcc -o executable main.c -I/home/user/include -L/home/user/lib -ltinyfw -lm -lSDL2
 ```
