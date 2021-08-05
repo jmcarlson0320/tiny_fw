@@ -13,6 +13,7 @@ App app_create(int width, int height, int scale)
     app.graphics.pixels_rgb = malloc(width * height * sizeof(int));
     app.graphics.width = width;
     app.graphics.height = height;
+    app.graphics.scale = scale;
 
     Bitmap canvas = bitmap_create(width, height, app.graphics.pixels_rgb);
     graphics_output_set(&canvas);
@@ -42,7 +43,7 @@ void app_start(App *app)
     // setup SDL for hw rendering
     int w = app->graphics.width;
     int h = app->graphics.height;
-    int scale = 3;
+    int scale = app->graphics.scale;
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(w * scale, h * scale, 0, &window, &renderer);
     SDL_RenderSetLogicalSize(renderer, w, h);

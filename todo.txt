@@ -6,3 +6,4 @@ TODO:
     graphics
         matrix library
         transformations
+    fullscreen/window/resolution/scale
