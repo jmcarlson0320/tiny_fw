@@ -113,7 +113,6 @@ typedef vec2 point2;
 typedef vec3 point3;
 typedef vec3 color_rgb;
 
-
 typedef struct {
     float mat[3][3];
 } transform;
@@ -166,6 +165,7 @@ int bitmap_create_from_ppm(Bitmap *b, char *filename);
 void bitmap_deallocate(Bitmap *b);
 void graphics_output_set(Bitmap *b);
 Bitmap graphics_output_get(void);
+
 void draw_point(int x, int y, int color);
 void draw_line(int x0, int y0, int x1, int y1, int color);
 void draw_rect(int x0, int y0, int x1, int y1, int color);
@@ -199,6 +199,7 @@ float vec2_dot(const vec2 *u, const vec2 *v);
 float vec2_len_sqr(const vec2 *v);
 float vec2_len(const vec2 *v);
 void vec2_normalize(vec2 *dest, const vec2 *v);
+
 vec3 new_vec3(float x, float y, float z);
 void vec3_add(vec3 *dest, const vec3 *u, const vec3 *v);
 void vec3_sub(vec3 *dest, const vec3 *u, const vec3 *v);
@@ -209,6 +210,7 @@ void vec3_cross(vec3 *dest, const vec3 *u, const vec3 *v);
 float vec3_len_sqr(const vec3 *v);
 float vec3_len(const vec3 *v);
 void vec3_normalize(vec3 *dest, const vec3 *v);
+
 transform new_transform();
 transform transform_combine(transform *b, transform *a);
 void transform_rotate(transform *t, float rad);

@@ -135,16 +135,9 @@ void app_update(App *app)
 
 void app_draw_graphics(App *app)
 {
-    // load app's pixel buffer data into a texture
     SDL_UpdateTexture(back_buffer, NULL, app->graphics.pixels_rgb, app->graphics.width * sizeof(int));
-
-    // clear SDL's renderer
     SDL_RenderClear(renderer);
-
-    // give the texture to SDL's renderer
     SDL_RenderCopy(renderer, back_buffer, NULL, NULL);
-
-    // draw the texture
     SDL_RenderPresent(renderer);
 }
 

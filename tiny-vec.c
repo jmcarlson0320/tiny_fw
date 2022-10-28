@@ -188,6 +188,8 @@ void transform_translate(transform *t, float dx, float dy)
 }
 
 // transforms a 2d coordinate using the transformation matrix
+// left-hand multiplication
+// x' = Ax
 void transform_apply(transform *t, vec2 *dest, vec2 *src)
 {
     vec3 in_h = new_vec3(src->e[X_COOR], src->e[Y_COOR], 1.0f);
