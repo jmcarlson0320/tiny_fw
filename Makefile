@@ -1,6 +1,6 @@
 DEFAULT_FONT_ABS_PATH = "/Users/joshuacarlson/lib/default_font.ppm"
 CC = gcc
-CFLAGS = -g -Wall -DFONT='$(DEFAULT_FONT_ABS_PATH)' -I/opt/homebrew/include -L/opt/homebrew/lib
+CFLAGS = -g -Wall -DFONT='$(DEFAULT_FONT_ABS_PATH)' -I/opt/homebrew/include
 BINARY = ~/lib/
 INCLUDE = ~/include/
 
