@@ -199,6 +199,7 @@ float vec2_dot(const vec2 *u, const vec2 *v);
 float vec2_len_sqr(const vec2 *v);
 float vec2_len(const vec2 *v);
 void vec2_normalize(vec2 *dest, const vec2 *v);
+
 vec3 new_vec3(float x, float y, float z);
 void vec3_add(vec3 *dest, const vec3 *u, const vec3 *v);
 void vec3_sub(vec3 *dest, const vec3 *u, const vec3 *v);
@@ -209,6 +210,7 @@ void vec3_cross(vec3 *dest, const vec3 *u, const vec3 *v);
 float vec3_len_sqr(const vec3 *v);
 float vec3_len(const vec3 *v);
 void vec3_normalize(vec3 *dest, const vec3 *v);
+
 transform new_transform();
 transform transform_combine(transform *b, transform *a);
 void transform_rotate(transform *t, float rad);

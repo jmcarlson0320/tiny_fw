@@ -7,3 +7,16 @@ TODO:
         matrix library
         transformations
     fullscreen/window/resolution/scale
+
+for next tiny_fw update
+
+- window/rendering at lower level
+	- use opengl and glfw instead of sdl
+	- use graphics buffer to update texture data
+	- draw texture to fullscreen quad
+
+imgui
+    dobutton_logic returns whether button was pressed, as well as the button state: active, idle, etc
+    button state is used for rendering
+
+
