@@ -7,6 +7,7 @@ static SDL_Window *window;
 static SDL_Renderer *renderer;
 static SDL_Texture *back_buffer;
 
+
 App app_create(int width, int height, int scale)
 {
     App app;
@@ -38,6 +39,7 @@ App app_create(int width, int height, int scale)
     return app;
 }
 
+
 void app_start(App *app)
 {
     // setup SDL for hw rendering
@@ -51,6 +53,7 @@ void app_start(App *app)
 
     app->running = 1;
 }
+
 
 void app_update(App *app)
 {
@@ -133,6 +136,7 @@ void app_update(App *app)
         SDL_ShowCursor(0);
 }
 
+
 void app_draw_graphics(App *app)
 {
     // load app's pixel buffer data into a texture
@@ -147,6 +151,7 @@ void app_draw_graphics(App *app)
     // draw the texture
     SDL_RenderPresent(renderer);
 }
+
 
 void app_quit(App *app)
 {

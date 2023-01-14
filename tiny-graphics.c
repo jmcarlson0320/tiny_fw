@@ -406,8 +406,8 @@ void draw_text(char *txt, int x, int y, int color)
         font_set = 1;
     }
 
-    int char_count = 0;
-    int row_count = 0;
+    int cursor_x = 0;
+    int cursor_y = 0;
 
     int table_width = default_font.bitmap.width / default_font.char_width;
 
@@ -416,8 +416,8 @@ void draw_text(char *txt, int x, int y, int color)
             return;
 
         while (*txt == '\n') {
-            char_count = 0;
-            row_count++;
+            cursor_x = 0;
+            cursor_y++;
             if (!*++txt)
                 return;
         }
@@ -429,13 +429,13 @@ void draw_text(char *txt, int x, int y, int color)
         int y0 = font_table_row * default_font.char_height;
         int x1 = font_table_col * default_font.char_width + default_font.char_width;
         int y1 = font_table_row * default_font.char_height + default_font.char_height;
-        int cursor_col = x + char_count * default_font.char_width;
-        int cursor_row = y + row_count * default_font.char_height;
+        int screen_x = x + cursor_x * default_font.char_width;
+        int screen_y = y + cursor_y * default_font.char_height;
 
-        draw_bitmap_color(&default_font.bitmap, x0, y0, x1, y1, cursor_col, cursor_row, color);
+        draw_bitmap_color(&default_font.bitmap, x0, y0, x1, y1, screen_x, screen_y, color);
 
         txt++;
-        char_count++;
+        cursor_x++;
     }
 }
 

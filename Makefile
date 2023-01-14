@@ -1,8 +1,8 @@
-DEFAULT_FONT_ABS_PATH = "/Users/joshuacarlson/lib/default_font.ppm"
+DEFAULT_FONT_ABS_PATH = "/Users/jmc/devel/lib/default_font.ppm"
 CC = gcc
 CFLAGS = -g -Wall -DFONT='$(DEFAULT_FONT_ABS_PATH)' -I/opt/homebrew/include
-BINARY = ~/lib/
-INCLUDE = ~/include/
+BINARY = ~/devel/lib/
+INCLUDE = ~/devel/include/
 
 libtinyfw.a: tiny-core.o tiny-graphics.o tiny-vec.o tiny-utils.o
 	ar rcs $@ $^ 
