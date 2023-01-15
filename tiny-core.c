@@ -1,12 +1,6 @@
-// Simple app interface implemented with SDL
+#include <stdlib.h>
 #include "tiny-fw.h"
-
-#include <SDL2/SDL.h>
-
-static SDL_Window *window;
-static SDL_Renderer *renderer;
-static SDL_Texture *back_buffer;
-
+#include "platform.h"
 
 App app_create(int width, int height, int scale)
 {
@@ -31,7 +25,7 @@ App app_create(int width, int height, int scale)
         app.keyboard.released[i] = 0;
     }
 
-    app.time.ticks = 0;
+    app.time.ticks = platform_get_time();
     app.time.dt_sec = 17.0f / 1000.0f;
 
     app.running = 0;
@@ -42,14 +36,12 @@ App app_create(int width, int height, int scale)
 
 void app_start(App *app)
 {
-    // setup SDL for hw rendering
     int w = app->graphics.width;
     int h = app->graphics.height;
     int scale = app->graphics.scale;
-    SDL_Init(SDL_INIT_VIDEO);
-    SDL_CreateWindowAndRenderer(w * scale, h * scale, 0, &window, &renderer);
-    SDL_RenderSetLogicalSize(renderer, w, h);
-    back_buffer = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, w, h);
+
+    platform_init();
+    platform_create_window(w, h, scale);
 
     app->running = 1;
 }
@@ -57,14 +49,13 @@ void app_start(App *app)
 
 void app_update(App *app)
 {
-    // perform timing calculations
-    // delay for a fixed frame-rate
-    int elapsed = SDL_GetTicks() - app->time.ticks;
-    int delay = 17 - elapsed;
+    int cur_time = platform_get_time();
+    app->time.dt_sec = (cur_time - app->time.ticks) / 1000.0f;
+    app->time.ticks = cur_time;
+    int delay = 17 - app->time.dt_sec * 1000.0f;
     if (delay < 0)
         delay = 0;
-    SDL_Delay(delay);
-    app->time.ticks = SDL_GetTicks();
+    platform_delay(delay);
 
     // clear the "mouse just pressed/released" state
     app->mouse.pressed[MOUSE_BUTTON_LEFT] = 0;
@@ -80,82 +71,19 @@ void app_update(App *app)
         app->keyboard.released[i] = 0;
     }
 
-    // process SDL events and update app state accordingly
-    // these are the "output" variables to be read by the user
-    SDL_Event event;
-    while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) {
-            app->running = 0;
-        } else if (event.type == SDL_KEYDOWN) {
-            SDL_KeyboardEvent *keyboard = (SDL_KeyboardEvent *) &event;
-            if (!keyboard->repeat) {
-                int key = keyboard->keysym.scancode;
-                if (key < 128) {
-                    app->keyboard.down[key] = 1;
-                    app->keyboard.pressed[key] = 1;
-                }
-            }
-        } else if (event.type == SDL_KEYUP) {
-            SDL_KeyboardEvent *keyboard = (SDL_KeyboardEvent *) &event;
-            if (!keyboard->repeat) {
-                int key = keyboard->keysym.scancode;
-                if (key < 128) {
-                    app->keyboard.down[key] = 0;
-                    app->keyboard.released[key] = 1;
-                }
-            }
-        } else if (event.type == SDL_MOUSEMOTION) {
-            SDL_MouseMotionEvent *mouse = (SDL_MouseMotionEvent *) &event;
-            app->mouse.dx = mouse->x - app->mouse.x;
-            app->mouse.dy = mouse->y - app->mouse.y;
-            app->mouse.x = mouse->x;
-            app->mouse.y = mouse->y;
-        } else if (event.type == SDL_MOUSEBUTTONDOWN) {
-            SDL_MouseButtonEvent *mouse = (SDL_MouseButtonEvent *) &event;
-            if (mouse->button == SDL_BUTTON_LEFT) {
-                app->mouse.button[MOUSE_BUTTON_LEFT] = 1;
-                app->mouse.pressed[MOUSE_BUTTON_LEFT] = 1;
-            } else if (mouse->button == SDL_BUTTON_RIGHT) {
-                app->mouse.button[MOUSE_BUTTON_RIGHT] = 1;
-                app->mouse.pressed[MOUSE_BUTTON_RIGHT] = 1;
-            }
-        } else if (event.type == SDL_MOUSEBUTTONUP) {
-            SDL_MouseButtonEvent *mouse = (SDL_MouseButtonEvent *) &event;
-            if (mouse->button == SDL_BUTTON_LEFT) {
-                app->mouse.button[0] = 0;
-                app->mouse.released[MOUSE_BUTTON_LEFT] = 1;
-            } else if (mouse->button == SDL_BUTTON_RIGHT) {
-                app->mouse.button[1] = 0;
-                app->mouse.released[MOUSE_BUTTON_RIGHT] = 1;
-            }
-        }
-    }
-
-    // we also scan the "input" variables meant to be set by the user
-    if (!app->mouse.show_mouse)
-        SDL_ShowCursor(0);
+    platform_user_input(app);
 }
 
 
 void app_draw_graphics(App *app)
 {
-    // load app's pixel buffer data into a texture
-    SDL_UpdateTexture(back_buffer, NULL, app->graphics.pixels_rgb, app->graphics.width * sizeof(int));
-
-    // clear SDL's renderer
-    SDL_RenderClear(renderer);
-
-    // give the texture to SDL's renderer
-    SDL_RenderCopy(renderer, back_buffer, NULL, NULL);
-
-    // draw the texture
-    SDL_RenderPresent(renderer);
+    platform_draw_graphics(app->graphics);
 }
 
 
 void app_quit(App *app)
 {
-    SDL_Quit();
+    platform_shutdown();
     free(app->graphics.pixels_rgb);
     app->graphics.pixels_rgb = NULL;
 }
