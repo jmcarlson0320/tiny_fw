@@ -1,5 +1,5 @@
 DEFAULT_FONT_ABS_PATH = "/Users/jmc/devel/lib/default_font.ppm"
-CC = gcc
+CC = clang
 CFLAGS = -g -Wall -DFONT='$(DEFAULT_FONT_ABS_PATH)' -I/opt/homebrew/include
 BINARY = ~/devel/lib/
 INCLUDE = ~/devel/include/
