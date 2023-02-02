@@ -57,7 +57,6 @@ void app_update(App *app)
         delay = 0;
     platform_delay(delay);
 
-    // clear the "mouse just pressed/released" state
     app->mouse.pressed[MOUSE_BUTTON_LEFT] = 0;
     app->mouse.pressed[MOUSE_BUTTON_RIGHT] = 0;
     app->mouse.released[MOUSE_BUTTON_LEFT] = 0;
@@ -65,7 +64,6 @@ void app_update(App *app)
     app->mouse.dx = 0;
     app->mouse.dy = 0;
 
-    // clear the "keyboard just pressed/released" state
     for (int i = 0; i < 128; i++) {
         app->keyboard.pressed[i] = 0;
         app->keyboard.released[i] = 0;
