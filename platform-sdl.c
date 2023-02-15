@@ -90,8 +90,8 @@ void platform_user_input(App *app)
 
 void platform_draw_graphics(struct graphics graphics)
 {
-    SDL_UpdateTexture(back_buffer, NULL, graphics.pixels_rgb, graphics.width * sizeof(int));
     SDL_RenderClear(renderer);
+    SDL_UpdateTexture(back_buffer, NULL, graphics.pixels_rgb, graphics.width * sizeof(int));
     SDL_RenderCopy(renderer, back_buffer, NULL, NULL);
     SDL_RenderPresent(renderer);
 }
